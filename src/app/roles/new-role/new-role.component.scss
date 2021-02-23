@@ -1,0 +1,23 @@
+.page-title {
+  margin-bottom: 20px;
+  padding: 1%;
+}
+.container {
+  height: 40vh;
+  background-color: rgb(255, 255, 255);
+  padding: 2%;
+  border-radius: 10px;
+  margin: 2% 10% 0 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    width: 100%;
+    align-self: center;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}

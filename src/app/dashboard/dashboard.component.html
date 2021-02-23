@@ -1,0 +1,63 @@
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side">
+    <div class="nav-list">
+      <h2>RAFIKI BORA</h2>
+      <div class="logo">
+        <img src="../../../assets/img/logo.png" alt="rafiki-bora-logo" />
+      </div>
+
+        <!-- TODO: Add router link here -->
+        <h2 class="heading-top-dashboard"><a [routerLink]="['home']">Dashboard</a></h2>
+        <hr class="heading-line-user" *ngIf="isAdmin()"/>
+
+      <mat-nav-list *ngIf="isAdmin()">
+        <h3 class="heading-user-management">User Management</h3>
+
+        <a mat-list-item [routerLink]="['roles']" [routerLinkActive]="['active']">Roles</a>
+        <a mat-list-item [routerLink]="['workgroups']" [routerLinkActive]="['active']" *ngIf="show">Workgroups</a>
+        <a mat-list-item [routerLink]="['users']" [routerLinkActive]="['active']">Users</a>
+      </mat-nav-list>
+      <hr *ngIf="isMerchantAndIsAdmin()" class="heading-line-merchant" />
+      <mat-nav-list *ngIf="isMerchantAndIsAdmin()">
+        <h3 class="heading-user-management">Merchants Management</h3>
+        <a mat-list-item [routerLink]="['merchants']" [routerLinkActive]="['active']" *ngIf="isAdmin()">Merchants</a>
+        <a mat-list-item [routerLink]="['merchants-dash']" [routerLinkActive]="['active']">Merchants Dashboard</a>
+      </mat-nav-list>
+      <hr class="heading-line-user" *ngIf="isAdmin()"/>
+      <mat-nav-list *ngIf="isAdmin()">
+        <h3 class="heading-user-management">Customers</h3>
+        <a mat-list-item [routerLink]="['customers']" [routerLinkActive]="['active']">Customers</a>
+      </mat-nav-list>
+      <hr class="heading-line-user" *ngIf="isAdmin()" />
+      <mat-nav-list *ngIf="isAdmin()">
+        <h3 class="heading-user-management">Terminals Management</h3>
+        <a mat-list-item [routerLink]="['terminals']" [routerLinkActive]="['active']">Manage Terminals</a>
+      </mat-nav-list>
+      <hr class="heading-line-user" *ngIf="isMerchantAndIsAdmin()"/>
+      <mat-nav-list *ngIf="isMerchantAndIsAdmin()">
+        <h3 class="heading-user-management" *ngIf="isMerchantAndIsAdmin()">AGENTS</h3>
+        <a mat-list-item [routerLink]="['agents']" [routerLinkActive]="['active']" *ngIf="isMerchantAndIsAdmin()">Agents</a>
+      </mat-nav-list>
+      <hr class="heading-line-user" />
+
+      <mat-nav-list >
+        <h3 class="heading-user-management">Reports</h3>
+        <a mat-list-item [routerLink]="['reports']" [routerLinkActive]="['active']">Show Reports</a>
+      </mat-nav-list>
+      <hr class="heading-line-user" />
+      
+      <mat-nav-list >
+        <h3 class="heading-user-management" *ngIf="show">Support Module</h3>
+        <a mat-list-item [routerLink]="['support']" [routerLinkActive]="['active']" *ngIf="show">Support Requests</a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="logout-button">
+      <a class="logout" mat-raised-button color="warn" (click)="logout()">
+        Logout
+      </a>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
